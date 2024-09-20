@@ -13,16 +13,16 @@ class ProductService
     {
         $parserService = new ParserService();
 
-        Subscription::firstOrCreate([
-            'olx_url' => $url,
-        ], [
-            'email' => $email,
-        ]);
-
-        Product::firstOrCreate([
+        $product = Product::firstOrCreate([
             'olx_url' => $url,
         ], [
             'price' => $parserService->getPriceFromOlx($url),
+        ]);
+
+        Subscription::firstOrCreate([
+            'email' => $email,
+        ], [
+            'product_id' => $product->id,
         ]);
     }
 
@@ -39,16 +39,16 @@ class ProductService
                     'price' => $price,
                 ]);
 
-                $this->sendEmailsToSubscribers($product->olx_url, $price);
+                $this->sendEmailsToSubscribers($product->id, $price);
             }
         }
     }
 
-    public function sendEmailsToSubscribers($url, $price): void
+    public function sendEmailsToSubscribers($productId, $price): void
     {
         $mailService = new MailService();
 
-        $subscriptions = Subscription::where('olx_url', $url)->get();
+        $subscriptions = Subscription::where('product_id', $productId)->get();
 
         if ($subscriptions->isNotEmpty()) {
             foreach ($subscriptions as $subscription) {

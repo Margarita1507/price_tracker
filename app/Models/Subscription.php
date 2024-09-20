@@ -9,5 +9,10 @@ class Subscription extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['olx_url', 'email'];
+    protected $fillable = ['product_id', 'email'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

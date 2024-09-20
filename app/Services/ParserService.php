@@ -28,7 +28,7 @@ class ParserService
             $price = $priceElement->text();
 
             return trim(preg_replace('/[^\d.]/', '', $price));
-        } catch (\Exception $e) {;
+        } catch (\Exception $e) {
             throw new \Exception('Price not found or page could not be processed');
         }
     }

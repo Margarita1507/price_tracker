@@ -13,11 +13,11 @@ class MailService
 
         try {
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';          // Укажите SMTP сервер
-            $mail->SMTPAuth = true;                  // Включить SMTP аутентификацию
-            $mail->Username = 'mslobodziana@gmail.com'; // SMTP логин
-            $mail->Password = 'gayy nssm uzab ruwa';       // SMTP пароль
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Включить шифрование TLS
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = ''; // SMTP логин
+            $mail->Password = ''; // SMTP пароль
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
             $mail->setFrom('pricetracker@example.com', 'Olx Price Tracker');
