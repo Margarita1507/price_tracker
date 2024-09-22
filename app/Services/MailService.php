@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class MailService
 {
-    public function sendEmail($to, $price): void
+    public function sendEmail(string $to, string $price): void
     {
         $mail = new PHPMailer(true);
 

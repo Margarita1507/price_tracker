@@ -9,7 +9,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class ProductService
 {
-    public function subscribeToProduct($url, $email): void
+    public function subscribeToProduct(string $url, string $email): void
     {
         $parserService = new ParserService();
 
@@ -44,7 +44,7 @@ class ProductService
         }
     }
 
-    public function sendEmailsToSubscribers($productId, $price): void
+    public function sendEmailsToSubscribers(int $productId, string $price): void
     {
         $mailService = new MailService();
 

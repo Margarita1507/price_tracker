@@ -14,7 +14,7 @@ class ParserService
         $this->client = new Client();
     }
 
-    public function getPriceFromOlx($url): string
+    public function getPriceFromOlx(string $url): string
     {
         try {
             $response = $this->client->request('GET', $url, [
