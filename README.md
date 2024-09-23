@@ -1,3 +1,5 @@
+ВАЖЛИВО! Щоб сервіс працював треба додати емайл и пароль від почти в MailService
+
 Client → ProductController → ProductService → ParcerService → Database (Products) → Database (Subscriptions) (оформлення підписки)
 Shedule → ProductService → Database (Products) → ParcerService → Database (Products) -> Database (Subscriptions) -> MailService (розсилка змін ціни)
 
